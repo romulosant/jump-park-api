@@ -11,21 +11,34 @@ use Illuminate\Validation\ValidationException;
 class ServiceOrderController extends Controller
 {
     /**
-     * Criar ordem de serviço
+     * Criar nova ordem de serviço
      */
     public function store(Request $request): JsonResponse
     {
         try {
             $validated = $request->validate([
                 'vehiclePlate' => 'required|string|size:7|regex:/^[A-Z]{3}[0-9]{4}$/',
-                'entryDateTime' => 'required|date_format:Y-m-d H:i:s',
+                'entryDateTime' => 'required|date_format:Y-m-d H:i:s|before_or_equal:now',
                 'exitDateTime' => 'nullable|date_format:Y-m-d H:i:s|after:entryDateTime',
-                'priceType' => 'nullable|string|max:55',
+                'priceType' => 'nullable|string|max:55|in:hora,diaria,mensal,avulso',
                 'price' => 'nullable|numeric|min:0|max:999999999.99',
                 'userId' => 'required|integer|exists:users,id'
+            ], [
+                'vehiclePlate.required' => 'A placa do veículo é obrigatória.',
+                'vehiclePlate.size' => 'A placa deve ter exatamente 7 caracteres.',
+                'vehiclePlate.regex' => 'A placa deve seguir o formato ABC1234.',
+                'entryDateTime.required' => 'A data/hora de entrada é obrigatória.',
+                'entryDateTime.date_format' => 'A data/hora deve estar no formato Y-m-d H:i:s.',
+                'entryDateTime.before_or_equal' => 'A data/hora de entrada não pode ser no futuro.',
+                'exitDateTime.after' => 'A data/hora de saída deve ser posterior à entrada.',
+                'priceType.in' => 'Tipo de preço deve ser: hora, diaria, mensal ou avulso.',
+                'price.numeric' => 'O preço deve ser um valor numérico.',
+                'price.min' => 'O preço não pode ser negativo.',
+                'userId.required' => 'O ID do usuário é obrigatório.',
+                'userId.exists' => 'O usuário especificado não existe.'
             ]);
 
-            // Valores padrão
+            // Aplicar valores padrão se não informados
             if (!isset($validated['exitDateTime'])) {
                 $validated['exitDateTime'] = '0001-01-01 00:00:00';
             }
@@ -33,6 +46,7 @@ class ServiceOrderController extends Controller
                 $validated['price'] = 0.00;
             }
 
+            // Criar ordem de serviço
             $serviceOrder = ServiceOrder::create($validated);
             $serviceOrder->load('user:id,name');
 
@@ -40,7 +54,7 @@ class ServiceOrderController extends Controller
                 'success' => true,
                 'message' => 'Ordem de serviço criada com sucesso',
                 'data' => $serviceOrder
-            ], 201);
+            ], 200); // Código 200 conforme requisito
 
         } catch (ValidationException $e) {
             return response()->json([
@@ -48,6 +62,7 @@ class ServiceOrderController extends Controller
                 'message' => 'Erro de validação',
                 'errors' => $e->errors()
             ], 422);
+
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -57,7 +72,7 @@ class ServiceOrderController extends Controller
     }
 
     /**
-     * Listar ordens de serviço
+     * Listar todas as ordens de serviço
      */
     public function index(): JsonResponse
     {
