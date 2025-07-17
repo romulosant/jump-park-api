@@ -1,291 +1,391 @@
-🚀 Jump Park API - Sistema de Gerenciamento de Ordens de Serviço
+# 🚀 Jump Park API - Sistema de Gerenciamento de Ordens de Serviço
 
-<strong>API REST robusta para gerenciamento de ordens de serviço de estacionamento</strong> </p>
-📋 Índice
-🎯 Sobre o Projeto
+## 📋 Sobre o Projeto
 
-✨ Funcionalidades
+API REST robusta para gerenciamento de ordens de serviço de estacionamento desenvolvida com Laravel PHP, MySQL e testes automatizados com Pest PHP.
 
-🛠️ Tecnologias
+# Como Clonar o Repositório Jump Park API
 
-🚀 Instalação
+## 📋 Pré-requisitos
 
-📡 Endpoints
+Antes de clonar o repositório, certifique-se de ter:
 
-🧪 Testes
+- **Git** instalado no seu computador
+- **PHP 8.2+** instalado
+- **Composer** instalado
+- **MySQL** ou XAMPP rodando
 
-📊 Estrutura do Banco
+## 🚀 Passos para Clonar
 
-🔧 Configuração
+### 1. Abrir Terminal/Prompt de Comando
 
-📝 Exemplos de Uso
+```bash
+# Windows: Abrir CMD ou PowerShell
+# Mac/Linux: Abrir Terminal
+```
 
-🤝 Contribuição
+### 2. Navegar para o Diretório Desejado
 
-🎯 Sobre o Projeto
-O Jump Park API é uma solução completa para gerenciamento de ordens de serviço de estacionamento, desenvolvida com foco em performance, segurança e escalabilidade. A API segue os padrões REST e implementa validações robustas para garantir a integridade dos dados.
+```bash
+# Exemplo: Navegar para Desktop
+cd Desktop
 
-🌟 Destaques
-✅ Arquitetura RESTful com endpoints bem definidos
+# Ou para uma pasta específica
+cd C:\projetos
+```
 
-✅ Validações avançadas para entrada de dados
+### 3. Clonar o Repositório
 
-✅ Testes automatizados com cobertura completa
+```bash
+# Clonar usando HTTPS
+git clone https://github.com/SEU-USUARIO/jump-park-api.git
 
-✅ Relacionamentos otimizados entre tabelas
+# Ou usando SSH (se configurado)
+git clone git@github.com:SEU-USUARIO/jump-park-api.git
+```
 
-✅ Documentação completa da API
+### 4. Entrar no Diretório do Projeto
 
-✅ Estrutura de banco espelhada do arquivo db-structure.sql
-
-✨ Funcionalidades
-🔐 Core Features
-Funcionalidade	Descrição	Status
-Criação de Ordens	Criar novas ordens de serviço com validações	✅
-Listagem de Ordens	Listar todas as ordens com relacionamentos	✅
-Validação de Dados	Validações robustas para entrada de dados	✅
-Relacionamentos	Associação entre usuários e ordens	✅
-Testes Automatizados	Cobertura completa com Pest PHP	✅
-📋 Validações Implementadas
-Placa do Veículo: Formato brasileiro (ABC1234)
-
-Data/Hora: Formato Y-m-d H:i:s com validação de período
-
-Tipo de Preço: Valores pré-definidos (hora, diaria, mensal, avulso)
-
-Usuário: Verificação de existência na base de dados
-
-Preço: Valores numéricos positivos
-
-🛠️ Tecnologias
-Backend
-Laravel 11.x - Framework PHP moderno e robusto
-
-PHP 8.2+ - Linguagem de programação
-
-MySQL 8.0+ - Sistema de gerenciamento de banco de dados
-
-Composer - Gerenciador de dependências PHP
-
-Testes
-Pest PHP - Framework de testes moderno e expressivo
-
-PHPUnit - Base para testes unitários
-
-RefreshDatabase - Isolamento de dados entre testes
-
-Ambiente
-XAMPP - Ambiente de desenvolvimento local
-
-phpMyAdmin - Interface gráfica para MySQL
-
-🚀 Instalação
-📋 Pré-requisitos
-PHP 8.2 ou superior
-
-Composer instalado
-
-MySQL 8.0 ou superior
-
-XAMPP (recomendado)
-
-🔧 Passo a Passo
-bash
-# 1. Clonar o repositório
-git clone https://github.com/seu-usuario/jump-park-api.git
+```bash
 cd jump-park-api
+```
 
-# 2. Instalar dependências
+### 5. Verificar se os Arquivos foram Clonados
+
+```bash
+# Listar arquivos
+ls -la     # Mac/Linux
+dir        # Windows
+
+# Você deve ver:
+# - app/
+# - database/
+# - tests/
+# - composer.json
+# - .env.example
+# - README.md
+```
+
+## 📂 Estrutura após Clonar
+
+```
+jump-park-api/
+├── app/
+│   ├── Http/Controllers/Api/
+│   └── Models/
+├── database/
+│   ├── factories/
+│   ├── migrations/
+├── tests/
+│   └── Feature/
+├── routes/
+├── composer.json
+├── .env.example
+├── phpunit.xml
+└── README.md
+```
+
+## 🔧 Próximos Passos após Clonar
+
+### 1. Instalar Dependências
+
+```bash
 composer install
+```
 
-# 3. Configurar arquivo de ambiente
-cp .env.example .env
+### 2. Configurar Ambiente
 
-# 4. Configurar banco de dados no .env
+```bash
+# Copiar arquivo de ambiente
+cp .env.example .env        # Mac/Linux
+copy .env.example .env      # Windows
+
+# Gerar chave da aplicação
+php artisan key:generate
+```
+
+### 3. Configurar Banco de Dados
+
+```bash
+# Editar arquivo .env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=jump_park
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
-# 5. Gerar chave da aplicação
-php artisan key:generate
+### 4. Executar Migrations
 
-# 6. Executar migrations
+```bash
 php artisan migrate
+```
 
-# 7. Iniciar servidor
+### 5. Iniciar Servidor
+
+```bash
 php artisan serve
-🎯 Configuração de Testes
-bash
-# Criar banco de dados para testes
-CREATE DATABASE jump_park_test;
+```
 
-# Executar migrations no ambiente de teste
-php artisan migrate --env=testing
+## ⚠️ Possíveis Problemas
 
-# Executar testes
-vendor\bin\pest
-📡 Endpoints
-🔗 Base URL
-text
-http://localhost:8000/api/v1
-📝 Endpoints Disponíveis
-1. Criar Ordem de Serviço
-text
-POST /service-orders
-Headers:
+### Erro: "git não é reconhecido"
+```bash
+# Instalar Git primeiro
+# Download: https://git-scm.com/download
+```
 
-text
-Content-Type: application/json
-Accept: application/json
-Parâmetros:
+### Erro: "repositório não encontrado"
+```bash
+# Verificar se o repositório é público
+# Verificar se a URL está correta
+```
 
-Campo	Tipo	Obrigatório	Descrição
-vehiclePlate	string	✅	Placa do veículo (ABC1234)
-entryDateTime	datetime	✅	Data/hora de entrada
-exitDateTime	datetime	❌	Data/hora de saída
-priceType	string	❌	Tipo de preço
-price	decimal	❌	Valor do serviço
-userId	integer	✅	ID do usuário
-Exemplo de Requisição:
+### Erro: "permissão negada"
+```bash
+# Configurar SSH keys se usando SSH
+# Ou usar HTTPS ao invés de SSH
+```
 
-json
+## 🎯 Comandos Resumidos
+
+```bash
+# Sequência completa
+git clone https://github.com/SEU-USUARIO/jump-park-api.git
+cd jump-park-api
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
+
+Após seguir estes passos, o projeto estará rodando em `http://localhost:8000` e pronto para uso!
+
+
+
+
+# 🚀 Passo a Passo de Construção do Projeto Jump Park API
+
+### **Etapa 1: Configuração Inicial**
+```bash
+# Criar novo projeto Laravel
+composer create-project laravel/laravel jump-park-api
+cd jump-park-api
+
+# Instalar Pest PHP para testes
+composer require pestphp/pest --dev --with-all-dependencies
+./vendor/bin/pest --init
+
+# Configurar ambiente (.env)
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=jump_park
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### **Etapa 2: Estrutura do Banco de Dados**
+```bash
+# Modificar migration users existente
+# Arquivo: database/migrations/xxxx_create_users_table.php
+Schema::create('users', function (Blueprint $table) {
+    $table->id();
+    $table->string('name', 255);
+});
+
+# Criar migration para service_orders
+php artisan make:migration create_service_orders_table
+```
+
+**Estrutura da tabela service_orders:**
+```php
+Schema::create('service_orders', function (Blueprint $table) {
+    $table->id();
+    $table->char('vehiclePlate', 7);
+    $table->dateTime('entryDateTime');
+    $table->dateTime('exitDateTime')->default('0001-01-01 00:00:00');
+    $table->string('priceType', 55)->nullable();
+    $table->decimal('price', 12, 2)->default(0.00);
+    $table->unsignedBigInteger('userId');
+    $table->foreign('userId')->references('id')->on('users');
+});
+```
+
+### **Etapa 3: Criação dos Models**
+```bash
+# Criar/modificar Model User
+php artisan make:model User
+```
+
+**Model User:**
+```php
+class User extends Model
 {
-    "vehiclePlate": "ABC1234",
-    "entryDateTime": "2024-01-15 10:30:00",
-    "exitDateTime": "2024-01-15 18:45:00",
-    "priceType": "hora",
-    "price": 25.50,
-    "userId": 1
-}
-Resposta de Sucesso (200):
-
-json
-{
-    "success": true,
-    "message": "Ordem de serviço criada com sucesso",
-    "data": {
-        "id": 1,
-        "vehiclePlate": "ABC1234",
-        "entryDateTime": "2024-01-15T10:30:00.000000Z",
-        "exitDateTime": "2024-01-15T18:45:00.000000Z",
-        "priceType": "hora",
-        "price": "25.50",
-        "userId": 1,
-        "user": {
-            "id": 1,
-            "name": "João Silva"
-        }
+    use HasFactory;
+    public $timestamps = false;
+    
+    protected $fillable = ['name'];
+    
+    public function serviceOrders(): HasMany
+    {
+        return $this->hasMany(ServiceOrder::class, 'userId');
     }
 }
-2. Listar Ordens de Serviço
-text
-GET /service-orders
-Resposta de Sucesso (200):
+```
 
-json
+**Model ServiceOrder:**
+```php
+class ServiceOrder extends Model
 {
-    "success": true,
-    "data": [
-        {
-            "id": 1,
-            "vehiclePlate": "ABC1234",
-            "entryDateTime": "2024-01-15 10:30:00",
-            "exitDateTime": "2024-01-15 18:45:00",
-            "priceType": "hora",
-            "price": "25.50",
-            "userId": 1,
-            "user_name": "João Silva"
-        }
-    ]
+    use HasFactory;
+    public $timestamps = false;
+    
+    protected $fillable = [
+        'vehiclePlate', 'entryDateTime', 'exitDateTime',
+        'priceType', 'price', 'userId'
+    ];
+    
+    protected $casts = [
+        'entryDateTime' => 'datetime',
+        'exitDateTime' => 'datetime',
+        'price' => 'decimal:2',
+        'userId' => 'integer'
+    ];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'userId');
+    }
 }
-⚠️ Códigos de Erro
-Código	Descrição
-200	Sucesso
-422	Erro de validação
-500	Erro interno do servidor
-🧪 Testes
-🎯 Cobertura de Testes
-A API possui 100% de cobertura dos cenários críticos:
+```
 
-✅ Criação com sucesso (código 200)
+### **Etapa 4: Criar Controller**
+```bash
+php artisan make:controller Api/ServiceOrderController
+```
 
-✅ Validação de erros (código 422)
+**Controller com validações:**
+```php
+class ServiceOrderController extends Controller
+{
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'vehiclePlate' => 'required|string|size:7|regex:/^[A-Z]{3}[0-9]{4}$/',
+            'entryDateTime' => 'required|date_format:Y-m-d H:i:s|before_or_equal:now',
+            'exitDateTime' => 'nullable|date_format:Y-m-d H:i:s|after:entryDateTime',
+            'priceType' => 'nullable|string|max:55|in:hora,diaria,mensal,avulso',
+            'price' => 'nullable|numeric|min:0|max:999999999.99',
+            'userId' => 'required|integer|exists:users,id'
+        ]);
+        
+        // Aplicar valores padrão
+        if (!isset($validated['exitDateTime'])) {
+            $validated['exitDateTime'] = '0001-01-01 00:00:00';
+        }
+        if (!isset($validated['price'])) {
+            $validated['price'] = 0.00;
+        }
+        
+        $serviceOrder = ServiceOrder::create($validated);
+        $serviceOrder->load('user:id,name');
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Ordem de serviço criada com sucesso',
+            'data' => $serviceOrder
+        ], 200);
+    }
+    
+    public function index(): JsonResponse
+    {
+        $serviceOrders = ServiceOrder::with('user:id,name')
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($order) {
+                return [
+                    'id' => $order->id,
+                    'vehiclePlate' => $order->vehiclePlate,
+                    'entryDateTime' => $order->entryDateTime->format('Y-m-d H:i:s'),
+                    'exitDateTime' => $order->exitDateTime->format('Y-m-d H:i:s'),
+                    'priceType' => $order->priceType,
+                    'price' => $order->price,
+                    'userId' => $order->userId,
+                    'user_name' => $order->user->name
+                ];
+            });
+            
+        return response()->json([
+            'success' => true,
+            'data' => $serviceOrders
+        ]);
+    }
+}
+```
 
-✅ Listagem com relacionamentos (user_name)
+### **Etapa 5: Configurar Rotas**
+```php
+// Arquivo: routes/api.php
+Route::prefix('v1')->group(function () {
+    Route::post('/service-orders', [ServiceOrderController::class, 'store']);
+    Route::get('/service-orders', [ServiceOrderController::class, 'index']);
+});
+```
 
-🏃‍♂️ Executar Testes
-bash
-# Todos os testes
-vendor\bin\pest
+### **Etapa 6: Criar Factories**
+```bash
+# UserFactory
+php artisan make:factory UserFactory
+```
 
-# Testes específicos da API
-vendor\bin\pest tests/Feature/ServiceOrderTest.php
+**UserFactory:**
+```php
+public function definition(): array
+{
+    return [
+        'name' => $this->faker->name(),
+    ];
+}
+```
 
-# Testes com detalhes
-vendor\bin\pest --verbose
+**ServiceOrderFactory:**
+```php
+public function definition()
+{
+    return [
+        'vehiclePlate' => strtoupper($this->faker->regexify('[A-Z]{3}[0-9]{4}')),
+        'entryDateTime' => $this->faker->dateTime(),
+        'exitDateTime' => '0001-01-01 00:00:00',
+        'priceType' => $this->faker->optional()->randomElement(['hora', 'diaria', 'mensal']),
+        'price' => $this->faker->randomFloat(2, 0, 999.99),
+        'userId' => User::factory()
+    ];
+}
+```
 
-# Testes com cobertura
-vendor\bin\pest --coverage
-📊 Resultado Esperado
-text
-✓ should create service order successfully
-✓ should fail with invalid data
-✓ should list service orders
+### **Etapa 7: Configurar Testes**
+```bash
+# Criar banco de teste
+CREATE DATABASE jump_park_test;
+```
 
-Tests:  3 passed
-Time:   0.87s
-📊 Estrutura do Banco
-🗄️ Diagrama de Relacionamentos
-text
-users (1) ←→ (N) service_orders
-📋 Tabelas
-users
-sql
-CREATE TABLE `users` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-service_orders
-sql
-CREATE TABLE `service_orders` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `vehiclePlate` CHAR(7) NOT NULL,
-  `entryDateTime` DATETIME NOT NULL,
-  `exitDateTime` DATETIME DEFAULT '0001-01-01 00:00:00',
-  `priceType` VARCHAR(55) DEFAULT NULL,
-  `price` DECIMAL(12,2) DEFAULT '0.00',
-  `userId` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_service_orders_users` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-);
-🔧 Configuração
-📁 Estrutura do Projeto
-text
-jump-park-api/
-├── app/
-│   ├── Http/Controllers/Api/
-│   │   └── ServiceOrderController.php
-│   └── Models/
-│       ├── User.php
-│       └── ServiceOrder.php
-├── database/
-│   ├── factories/
-│   │   ├── UserFactory.php
-│   │   └── ServiceOrderFactory.php
-│   └── migrations/
-├── tests/
-│   └── Feature/
-│       └── ServiceOrderTest.php
-├── routes/
-│   └── api.php
-└── README.md
-⚙️ Configurações Importantes
-Database (config/database.php)
-php
+**Configurar phpunit.xml:**
+```xml
+
+    
+    
+    
+    
+    
+    
+
+```
+
+**Configurar database.php:**
+```php
 'testing' => [
     'driver' => 'mysql',
     'host' => '127.0.0.1',
@@ -299,50 +399,90 @@ php
     'strict' => true,
     'engine' => null,
 ],
-PHPUnit (phpunit.xml)
-xml
-<php>
-    <env name="APP_ENV" value="testing"/>
-    <env name="DB_CONNECTION" value="testing"/>
-    <env name="DB_DATABASE" value="jump_park_test"/>
-    <env name="CACHE_DRIVER" value="array"/>
-    <env name="SESSION_DRIVER" value="array"/>
-    <env name="QUEUE_CONNECTION" value="sync"/>
-</php>
-📝 Exemplos de Uso
-🎯 Cenário 1: Criação Básica
-bash
-curl -X POST http://localhost:8000/api/v1/service-orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "vehiclePlate": "ABC1234",
-    "entryDateTime": "2024-01-15 10:30:00",
-    "userId": 1
-  }'
-🎯 Cenário 2: Criação Completa
-bash
-curl -X POST http://localhost:8000/api/v1/service-orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "vehiclePlate": "XYZ9876",
-    "entryDateTime": "2024-01-15 14:00:00",
-    "exitDateTime": "2024-01-15 20:00:00",
-    "priceType": "diaria",
-    "price": 50.00,
-    "userId": 2
-  }'
-🎯 Cenário 3: Listagem
-bash
-curl -X GET http://localhost:8000/api/v1/service-orders \
-  -H "Accept: application/json"
-🤝 Contribuição
-🌟 Como Contribuir
-Fork o projeto
+```
 
-Crie uma branch para sua feature (git checkout -b feature/nova-funcionalidade)
+### **Etapa 8: Criar Testes**
+```php
+// Arquivo: tests/Feature/ServiceOrderTest.php
+class ServiceOrderTest extends TestCase
+{
+    use RefreshDatabase;
+    
+    public function test_should_create_service_order_successfully(): void
+    {
+        $user = User::create(['name' => 'João Silva']);
+        
+        $response = $this->postJson('/api/v1/service-orders', [
+            'vehiclePlate' => 'ABC1234',
+            'entryDateTime' => '2024-01-15 10:30:00',
+            'exitDateTime' => '2024-01-15 18:45:00',
+            'priceType' => 'hora',
+            'price' => 25.50,
+            'userId' => $user->id
+        ]);
+        
+        $response->assertStatus(200)
+            ->assertJson(['success' => true]);
+    }
+    
+    public function test_should_fail_with_invalid_data(): void
+    {
+        $response = $this->postJson('/api/v1/service-orders', [
+            'vehiclePlate' => 'INVALID_PLATE',
+            'entryDateTime' => 'invalid-date',
+            'userId' => 999
+        ]);
+        
+        $response->assertStatus(422)
+            ->assertJson(['success' => false]);
+    }
+    
+    public function test_should_list_service_orders(): void
+    {
+        $user = User::create(['name' => 'João Silva']);
+        
+        ServiceOrder::create([
+            'vehiclePlate' => 'ABC1234',
+            'entryDateTime' => '2024-01-15 10:30:00',
+            'exitDateTime' => '0001-01-01 00:00:00',
+            'priceType' => 'hora',
+            'price' => 25.50,
+            'userId' => $user->id
+        ]);
+        
+        $response = $this->getJson('/api/v1/service-orders');
+        
+        $response->assertStatus(200)
+            ->assertJson(['success' => true]);
+    }
+}
+```
 
-Commit suas mudanças (git commit -m 'Adiciona nova funcionalidade')
+### **Etapa 9: Executar e Testar**
+```bash
+# Executar migrations
+php artisan migrate
+php artisan migrate --env=testing
 
-Push para a branch (git push origin feature/nova-funcionalidade)
+# Executar testes
+vendor\bin\pest
 
-Abra um Pull Request
+# Iniciar servidor
+php artisan serve
+
+# Testar endpoints
+POST http://localhost:8000/api/v1/service-orders
+GET http://localhost:8000/api/v1/service-orders
+```
+
+### **Etapa 10: Resultado Final**
+- ✅ API REST com 2 endpoints funcionais
+- ✅ Validações robustas implementadas
+- ✅ Testes automatizados (3 passed)
+- ✅ Relacionamentos funcionando (user_name)
+- ✅ Códigos de resposta corretos (200/422)
+- ✅ Estrutura baseada em db-structure.sql
+
+**Projeto concluído com sucesso!**
+
+
